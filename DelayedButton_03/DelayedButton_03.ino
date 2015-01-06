@@ -34,9 +34,9 @@ const int instantLedPin =  13;   // the number of the LED pin that will light as
 const int delayedLedPin1 = 8;     // Should only fire after a N sec button press
 const int delayedLedPin2 = 7;     // Should only fire after a N sec button press
 const int buzzerPin = 5;          // Power pin for the buzzer
-const int delayAmount = 0;    // Amount of time button needs to be pressed to light the second LED
+const int delayAmount = 2000;    // Amount of time button needs to be pressed to light the second LED
 const int lightDuration = 4000;  // Amount of time the LED should light
-const int buzzerDuration = 2000;  // Amount of time the buzzer should sound; should be >= lightDuration
+const int buzzerDuration = 1000;  // Amount of time the buzzer should sound; should be >= lightDuration
 const int debug = 0;             // Set to 1 to use the serial debugger
 
 // variables will change:
