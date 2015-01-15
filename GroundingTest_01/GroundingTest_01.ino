@@ -20,10 +20,12 @@ const int fencer1_b = 3;             // B Line for Fencer 1
 const int fencer2_c = 8;             // C Line for Fencer 2
 
 const int fencer1_light = 10;        // LED when fencer1 Hits
-//const int fencer1_light = 11;      // LED when fencer2 Hits
-//const int buzzer = 12;             // Buzzer Pin
+//const int fencer1_light = 12;      // LED when fencer2 Hits
+const int buzzer = 11;             // Buzzer Pin
 
-const int light_length = 1;          // Length light should show (in seconds)
+const float light_length = 2;          // Length light should show (in seconds)
+const float buzzer_length = 0.5;       // Length buzzer should sound (in seconds) ** Must be less than light_length
+const int debounce = 50;            // Length of delay after grounded hit
 
 const int onboard_led = 13;          // Onboard LED for testing
 
@@ -56,13 +58,20 @@ void setup() {
   
   pinMode(onboard_led, OUTPUT);
   
+  // initialize the buzzer
+  pinMode(buzzer, OUTPUT);
+  
   // Signal when setup is done
   for (int i=0; i < 5; i++) {
     digitalWrite(onboard_led, HIGH);
-    delay(500);
+    delay(250);
     digitalWrite(onboard_led, LOW);
-    delay(500);
+    delay(250);
   }
+  digitalWrite(buzzer, HIGH);
+  delay(250);
+  digitalWrite(buzzer, LOW);
+
 }
 
 void loop(){
@@ -84,17 +93,22 @@ void loop(){
     Serial.println("Hit and Ground");
     digitalWrite(onboard_led, HIGH);
     digitalWrite(fencer1_light, LOW);
-    delay(light_length * 1000);
+    delay(debounce);
   } else if (fencer2_ground_state) {
     Serial.println("Ground Only");
     digitalWrite(onboard_led, HIGH);
-    digitalWrite(fencer1_light, HIGH);
-    delay(light_length * 1000);
+    digitalWrite(fencer1_light, LOW);
+    delay(debounce);
   } else if (fencer1_hit_state) {
     Serial.println("Hit Only");
     digitalWrite(onboard_led, LOW);
     digitalWrite(fencer1_light, HIGH);
-    delay(light_length * 1000);
+    digitalWrite(buzzer, HIGH);
+    delay(buzzer_length * 1000);
+    digitalWrite(buzzer, LOW);
+    delay((light_length * 1000) - (buzzer_length * 1000));
+    digitalWrite(fencer1_light, LOW);
+    
   } else {
     Serial.println("Neither Hit nor Ground");
     digitalWrite(onboard_led, LOW);
