@@ -41,7 +41,7 @@ bool is_fencer1_hit() {
    return digitalRead(fencer1_b) == HIGH;
 }
 
-void run() {
+void loop() {
    //Serial.println("== Loop Start ==");
 
    bool fencer1_hit = is_fencer1_hit();

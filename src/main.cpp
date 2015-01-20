@@ -13,7 +13,6 @@
 // Constants won't change.
 #include "Arduino.h"
 #include "lines.h"
-#include "scoring_machine.h"
 #include "pin_setup.h"
 
 const boolean DEBUG = true;               // Set to true to use the serial debugger
@@ -42,6 +41,3 @@ void setup() {
    signal_setup_complete();
 }
 
-void loop(){
-   run();
-}
