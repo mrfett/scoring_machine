@@ -11,6 +11,7 @@
  */
 
 // Constants won't change.
+#include "Arduino.h"
 #include "lines.h"
 #include "configurations.h"
 
