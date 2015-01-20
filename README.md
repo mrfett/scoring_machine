@@ -3,7 +3,7 @@ scoring_machine
 
 Arduino based fencing scoring machine
 
-###Build###
+###Prerequisites###
 
 Install PlatformIO:
 
@@ -11,6 +11,12 @@ Install PlatformIO:
 
 This will install the *platformio* command line tool.
 
+###Build###
+
 Run the build:
 
     platformio run
+    
+Install the build on a connected board:
+
+    platformio run --target upload
