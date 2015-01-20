@@ -11,23 +11,11 @@
  */
 
 // Constants won't change.
-const int fencer1_a = 2;             // A Line for Fencer 1
-const int fencer1_b = 3;             // B Line for Fencer 1
-//const int fencer1_c = 4;           // C Line for Fencer 1
+#include "lines.h"
+#include "configurations.h"
 
-//const int fencer2_a = 6;           // A Line for Fencer 2
-//const int fencer2_b = 7;           // B Line for Fencer 2
-const int fencer2_c = 8;             // C Line for Fencer 2
 
-const int fencer1_light = 10;        // LED when fencer1 Hits
-//const int fencer1_light = 12;      // LED when fencer2 Hits
-const int buzzer = 11;             // Buzzer Pin
 
-const float light_length = 2;          // Length light should show (in seconds)
-const float buzzer_length = 0.5;       // Length buzzer should sound (in seconds) ** Must be less than light_length
-const int debounce = 50;            // Length of delay after grounded hit
-
-const int onboard_led = 13;          // Onboard LED for testing
 
 const boolean debug = true;          // Set to true to use the serial debugger
 
@@ -61,16 +49,16 @@ void setup() {
   // initialize the buzzer
   pinMode(buzzer, OUTPUT);
   
-  // Signal when setup is done
-  for (int i=0; i < 5; i++) {
-    digitalWrite(onboard_led, HIGH);
-    delay(250);
-    digitalWrite(onboard_led, LOW);
-    delay(250);
-  }
-  digitalWrite(buzzer, HIGH);
-  delay(250);
-  digitalWrite(buzzer, LOW);
+//  // Signal when setup is done
+//  for (int i=0; i < 5; i++) {
+//    digitalWrite(onboard_led, HIGH);
+//    delay(250);
+//    digitalWrite(onboard_led, LOW);
+//    delay(250);
+//  }
+//  digitalWrite(buzzer, HIGH);
+//  delay(250);
+//  digitalWrite(buzzer, LOW);
 
 }
 
