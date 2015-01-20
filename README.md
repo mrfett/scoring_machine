@@ -7,7 +7,7 @@ Arduino based fencing scoring machine
 
 Install PlatformIO:
 
-    sudo python -c "$(curl -fsSL https://raw.githubusercontent.com/ivankravets/platformio/master/scripts/get-platformio.py)"
+    $ sudo python -c "$(curl -fsSL https://raw.githubusercontent.com/ivankravets/platformio/master/scripts/get-platformio.py)"
 
 This will install the *platformio* command line tool.
 
@@ -15,8 +15,23 @@ This will install the *platformio* command line tool.
 
 Run the build:
 
-    platformio run
+    $ platformio run
     
 Install the build on a connected board:
 
-    platformio run --target upload
+    $ platformio run --target upload
+
+###Output###
+
+To view the output from the *Serial.println* statements:
+
+Find out what port the Arduino device is listening on:
+
+    $ platformio serialports list
+
+Listen to the specific port:
+
+    $ platformio serialports monitor -p /dev/cu.usbmodem1411
+
+
+    
