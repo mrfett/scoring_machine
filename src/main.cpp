@@ -1,12 +1,12 @@
 /*
    Grounding Test
- 
+
     1. See if a button can be connected to two pins instead of ground without destroying the Arduino
-    2. See if resistors will allow control over which path the current takes 
- 
+    2. See if resistors will allow control over which path the current takes
+
  created 2015
  by B.J. Self
- 
+
 
  */
 
@@ -34,10 +34,10 @@ void setup() {
    // Set up debugging
    if (DEBUG) {
       Serial.begin(9600);
+      Serial.println("Debugging Started...");
    }
-   
+
    setup_pins();
 
    signal_setup_complete();
 }
-
