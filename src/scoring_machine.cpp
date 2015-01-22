@@ -6,12 +6,14 @@ void hit_and_ground() {
    Serial.println("Hit and Ground");
    digitalWrite(onboard_led, HIGH);
    digitalWrite(fencer1_light, LOW);
+   digitalWrite(fencer2_light, LOW);
    delay(debounce);
 }
 
 void ground_only() {
    Serial.println("Ground Only");
    digitalWrite(onboard_led, HIGH);
+   digitalWrite(fencer1_light, LOW);
    digitalWrite(fencer1_light, LOW);
    delay(debounce);
 }
@@ -35,8 +37,9 @@ void hit_only(int fencer) {
 
 void not_hit_or_ground() {
    //Serial.println("Neither Hit nor Ground");
-   //digitalWrite(onboard_led, LOW);
-   //digitalWrite(fencer1_light, LOW);
+   digitalWrite(onboard_led, LOW);
+   digitalWrite(fencer1_light, LOW);
+   digitalWrite(fencer2_light, LOW);
 }
 
 bool is_fencer1_grounded() {
