@@ -19,6 +19,7 @@ void ground_only() {
 }
 
 void hit_only(int fencer) {
+  touch_time = millis();
   int light = 0;
    if(fencer == 1) {
      light = fencer1_light;
@@ -28,10 +29,14 @@ void hit_only(int fencer) {
    Serial.println("Hit Only");
    digitalWrite(onboard_led, LOW);
    digitalWrite(light, HIGH);
-   digitalWrite(buzzer, HIGH);
-   delay(buzzer_length * 1000);
-   digitalWrite(buzzer, LOW);
-   delay((light_length * 1000) - (buzzer_length * 1000));
+   if (!mute) {
+     digitalWrite(buzzer, HIGH);
+     delay(buzzer_length * 1000);
+     digitalWrite(buzzer, LOW);
+     delay((light_length * 1000) - (buzzer_length * 1000));
+   } else {
+     delay(light_length * 1000);
+   }
    digitalWrite(light, LOW);
 }
 
