@@ -48,24 +48,78 @@ void not_hit_or_ground() {
 }
 
 bool is_fencer1_grounded() {
-  return digitalRead(fencer1_c) == HIGH;
+  if (threshold_medium > analogRead(fencer1_c) > threshold_low) {
+    return true;
+  } else {
+    return false;
+  }
+  //return digitalRead(fencer1_c) == HIGH;
 }
 
 bool is_fencer2_grounded() {
-   return digitalRead(fencer2_c) == HIGH;
+  if (threshold_medium > analogRead(fencer2_c) > threshold_low) {
+    return true;
+  } else {
+    return false;
+  }
+   //return digitalRead(fencer2_c) == HIGH;
 }
 
 bool is_fencer1_hit() {
-   return digitalRead(fencer1_b) == HIGH;
+  int reading = analogRead(fencer1_b);
+  if (threshold_high > reading > threshold_medium) {
+    return true;
+    Serial.println("Is Fencer 1 Hit: True");
+  } else {
+    return false;
+    Serial.println("Is Fencer 1 Hit: False");
+  }
+   //return digitalRead(fencer1_b) == HIGH;
 }
 
 bool is_fencer2_hit() {
-  return digitalRead(fencer2_b) == HIGH;
+  if (threshold_high > analogRead(fencer2_b) > threshold_medium) {
+    return true;
+  } else {
+    return false;
+  }
+  //return digitalRead(fencer2_b) == HIGH;
 }
 
 void loop() {
    //Serial.println("== Loop Start ==");
+   /*
+   Serial.println("Fencer 1:");
+   Serial.println(analogRead(fencer1_a));
+   Serial.println(analogRead(fencer1_b));
+   Serial.println(analogRead(fencer1_c));
+   Serial.println("============");
 
+   Serial.println("Fencer 2:");
+   Serial.println(analogRead(fencer2_a));
+   Serial.println(analogRead(fencer2_b));
+   Serial.println(analogRead(fencer2_c));
+   Serial.println("============");
+   delay(1000);
+   */
+
+   int reading1_a = analogRead(fencer1_a);
+   int reading1_b = analogRead(fencer1_b);
+   int reading1_c = analogRead(fencer1_c);
+   int reading2_a = analogRead(fencer2_a);
+   int reading2_b = analogRead(fencer2_b);
+   int reading2_c = analogRead(fencer2_c);
+
+   if (threshold_low < reading1_b && reading1_b < threshold_medium) {
+     hit_and_ground();
+   }
+   if (threshold_medium < reading1_b && reading1_b < threshold_high) {
+     hit_only(1);
+   }
+   if (reading1_b < threshold_low) {
+     not_hit_or_ground();
+   }
+   /*
    bool fencer1_hit = is_fencer1_hit();
    bool fencer1_grounded = is_fencer1_grounded();
 
@@ -91,4 +145,5 @@ void loop() {
    } else {
      not_hit_or_ground();
    }
+   */
 }

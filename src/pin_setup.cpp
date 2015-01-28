@@ -3,10 +3,10 @@
 
 void setup_pins() {
    // initialize buttons
-   pinMode(fencer1_a, OUTPUT);
+   pinMode(fencer1_a, INPUT);
    digitalWrite(fencer1_a, HIGH);
 
-   pinMode(fencer2_a, OUTPUT);
+   pinMode(fencer2_a, INPUT);
    digitalWrite(fencer2_a, HIGH);
 
    pinMode(fencer1_b, INPUT);
