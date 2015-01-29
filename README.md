@@ -20,6 +20,8 @@ Run the build:
 Install the build on a connected board:
 
     $ platformio run --target upload
+    
+    example: platformio run --upload-port /dev/cu.usbmodem1411 -t upload
 
 ###Output###
 
