@@ -119,6 +119,16 @@ void loop() {
    if (reading1_b < threshold_low) {
      not_hit_or_ground();
    }
+
+   if (threshold_low < reading2_b && reading2_b < threshold_medium) {
+     hit_and_ground();
+   }
+   if (threshold_medium < reading2_b && reading2_b < threshold_high) {
+     hit_only(2);
+   }
+   if (reading2_b < threshold_low) {
+     not_hit_or_ground();
+   }
    /*
    bool fencer1_hit = is_fencer1_hit();
    bool fencer1_grounded = is_fencer1_grounded();
