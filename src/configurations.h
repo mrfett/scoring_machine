@@ -1,14 +1,19 @@
 
-const float light_length = 2;             // Length light should show (in seconds)
-const float buzzer_length = 0.5;          // Length buzzer should sound (in seconds) ** Must be less than light_length
-const int debounce = 0;                   // Length of delay after grounded hit
+// Length light should show (in seconds)
+const float light_length = 2000;
+// Length buzzer should sound (in seconds) ** Must be less than light_length
+const float buzzer_length = 500;          
 
-bool mute = false;                        // Mute the buzzer
+// Mute the buzzer
+bool mute = false;                        
 
-const int threshold_low = 150;                // When current is split 3 ways (weapon A + weapon B + ground)
-const int threshold_medium = 290;             // When current is split 2 ways (weapon A + weapon B)
-const int threshold_high = 706;               // When current is not split (weapon A)
+// When current is split 3 ways (weapon A + weapon B + ground)
+const int threshold_low = 150;                
+// When current is split 2 ways (weapon A + weapon B)
+const int threshold_medium = 290;             
+// When current is not split (weapon A)
+const int threshold_high = 706;               
 
 // Epee Timing
-const int epee_timeout_duration = 40;     // Stop registering touches after x milliseconds
-float touch_time = 0;                     // Time of the last touch in milliseconds
+// Stop registering touches after x milliseconds
+const int epee_timeout_duration = 40;     
