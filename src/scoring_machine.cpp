@@ -25,6 +25,20 @@ float calculate_time_since_scoring() {
 }
 
 void loop() {
+/*
+    Serial.println("Fencer 1:");
+    Serial.println(analogRead(fencer1_a));
+    Serial.println(analogRead(fencer1_b));
+    Serial.println(analogRead(fencer1_c));
+    Serial.println("============");
+
+    Serial.println("Fencer 2:");
+    Serial.println(analogRead(fencer2_a));
+    Serial.println(analogRead(fencer2_b));
+    Serial.println(analogRead(fencer2_c));
+    Serial.println("============");
+    delay(1000);
+*/
    int reading1_a = analogRead(fencer1_a);
    int reading1_b = analogRead(fencer1_b);
    int reading1_c = analogRead(fencer1_c);
