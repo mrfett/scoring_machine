@@ -1,8 +1,8 @@
 
-// Length light should show (in seconds)
-const float light_length = 2000;
-// Length buzzer should sound (in seconds) ** Must be less than light_length
-const float buzzer_length = 500;
+// Length light should show (in milliseconds)
+const float light_length = 4000;
+// Length buzzer should sound (in milliseconds) ** Must be less than light_length
+const float buzzer_length = 1000;
 
 // Mute the buzzer
 bool mute = false;

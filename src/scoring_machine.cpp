@@ -48,7 +48,7 @@ void loop() {
 
 
    if (!fencer1_scored) {
-      if (reading1_b > threshold_medium && reading1_b < threshold_high) {
+      if (reading1_b > threshold_low && reading2_c < threshold_low) {
          if (fencer2_scored) {
             if (calculate_time_since_scoring() < epee_timeout_duration) {
                fencer1_scored = true;
@@ -62,7 +62,7 @@ void loop() {
    }
 
    if (!fencer2_scored) {
-      if (reading2_b > threshold_medium && reading2_b < threshold_high) {
+      if (reading2_b > threshold_low && reading1_c < threshold_low) {
          if (fencer1_scored) {
             if (calculate_time_since_scoring() < epee_timeout_duration) {
                fencer2_scored = true;
