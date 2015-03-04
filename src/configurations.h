@@ -7,6 +7,9 @@ const float buzzer_length = 1000;
 // Mute the buzzer
 bool mute = false;
 
+// What weapon mode is currently selected
+int mode = 1;
+
 // When current is split 3 ways (weapon A + weapon B + ground)
 const int threshold_low = 75;
 // When current is split 2 ways (weapon A + weapon B)
