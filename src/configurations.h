@@ -8,9 +8,9 @@ const float buzzer_length = 1000;
 bool mute = false;
 
 // When current is split 3 ways (weapon A + weapon B + ground)
-const int threshold_low = 125;
+const int threshold_low = 75;
 // When current is split 2 ways (weapon A + weapon B)
-const int threshold_medium = 270;
+const int threshold_medium = 250;
 // When current is not split (weapon A)
 const int threshold_high = 400;
 
