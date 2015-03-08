@@ -23,4 +23,8 @@ void setup_pins() {
 
    // initialize the buzzer
    pinMode(buzzer, OUTPUT);
+
+   // initialize the mode button
+   pinMode(mode_button, INPUT);
+   digitalWrite(mode_button, HIGH);
 }

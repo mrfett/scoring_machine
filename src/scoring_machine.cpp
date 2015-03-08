@@ -1,7 +1,6 @@
 #include "Arduino.h"
 #include "configurations.h"
 #include "lines.h"
-#include "epee.h"
 
 
 bool fencer1_scored = false;
@@ -27,6 +26,9 @@ float calculate_time_since_scoring() {
 
 void debug_loop() {
 
+  Serial.begin(9600);
+  Serial.println("Debugging Started...");
+
   Serial.println("Fencer 1:");
   Serial.println(analogRead(fencer1_a));
   Serial.println(analogRead(fencer1_b));
@@ -39,6 +41,8 @@ void debug_loop() {
   Serial.println(analogRead(fencer2_c));
   Serial.println("============");
   delay(1000);
+
+  Serial.end();
 
   return;
 }
@@ -113,8 +117,20 @@ void epee_loop() {
   return;
 }
 
+int increment_mode(int current_mode) {
+  int new_mode = current_mode++;
+  if (new_mode >= total_modes) {
+    new_mode = 0;
+  }
+
+  return new_mode;
+}
 
 void loop() {
+  if (digitalRead(mode_button) == LOW) {
+    mode = increment_mode(mode);
+  }
+
   if (mode == 1) {
     epee_loop();
   } else if (mode == 0) {

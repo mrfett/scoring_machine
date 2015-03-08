@@ -8,6 +8,10 @@ const float buzzer_length = 1000;
 bool mute = false;
 
 // What weapon mode is currently selected
+
+// 0 - Debug Mode
+// 1 - Epee Mode
+int total_modes = 2;
 int mode = 1;
 
 // When current is split 3 ways (weapon A + weapon B + ground)
