@@ -25,9 +25,7 @@ float calculate_time_since_scoring() {
 }
 
 void debug_loop() {
-
-  Serial.begin(9600);
-  Serial.println("Debugging Started...");
+  Serial.println("Debug Mode!");
 
   Serial.println("Fencer 1:");
   Serial.println(analogRead(fencer1_a));
@@ -42,12 +40,20 @@ void debug_loop() {
   Serial.println("============");
   delay(1000);
 
-  Serial.end();
+  //Serial.end();
+
+  return;
+}
+
+void foil_loop() {
+  Serial.println("Foil Mode!");
 
   return;
 }
 
 void epee_loop() {
+  Serial.println("Epee Mode!");
+
   int reading1_a = analogRead(fencer1_a);
   int reading1_b = analogRead(fencer1_b);
   int reading1_c = analogRead(fencer1_c);
@@ -118,7 +124,8 @@ void epee_loop() {
 }
 
 int increment_mode(int current_mode) {
-  int new_mode = current_mode++;
+  int new_mode = current_mode + 1;
+
   if (new_mode >= total_modes) {
     new_mode = 0;
   }
@@ -128,11 +135,18 @@ int increment_mode(int current_mode) {
 
 void loop() {
   if (digitalRead(mode_button) == LOW) {
+    digitalWrite(mode_button_led, LOW);
+    Serial.println("Mode Change:");
+
+    delay(500);
     mode = increment_mode(mode);
+    digitalWrite(mode_button_led, HIGH);
   }
 
   if (mode == 1) {
     epee_loop();
+  } else if (mode == 2) {
+    foil_loop();
   } else if (mode == 0) {
     debug_loop();
   }

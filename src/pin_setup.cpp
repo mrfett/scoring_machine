@@ -27,4 +27,7 @@ void setup_pins() {
    // initialize the mode button
    pinMode(mode_button, INPUT);
    digitalWrite(mode_button, HIGH);
+
+   pinMode(mode_button_led, OUTPUT);
+   digitalWrite(mode_button_led, HIGH);
 }

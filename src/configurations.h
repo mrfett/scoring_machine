@@ -11,11 +11,12 @@ bool mute = false;
 
 // 0 - Debug Mode
 // 1 - Epee Mode
-int total_modes = 2;
+// 2 - Foil Mode
+int total_modes = 3;
 int mode = 1;
 
 // When current is split 3 ways (weapon A + weapon B + ground)
-const int threshold_low = 75;
+const int threshold_low = 15;
 // When current is split 2 ways (weapon A + weapon B)
 const int threshold_medium = 250;
 // When current is not split (weapon A)
