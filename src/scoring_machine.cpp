@@ -51,19 +51,32 @@ void foil_loop() {
   return;
 }
 
+void read_pins(int fencer1_values[], int fencer2_values[]) {
+  fencer1_values[0] = analogRead(fencer1_a);
+  fencer1_values[1] = analogRead(fencer1_b);
+  fencer1_values[2] = analogRead(fencer1_c);
+
+  fencer2_values[0] = analogRead(fencer2_a);
+  fencer2_values[1] = analogRead(fencer2_b);
+  fencer2_values[2] = analogRead(fencer2_c);
+}
+
 void epee_loop() {
   Serial.println("Epee Mode!");
 
+  read_pins(fencer1_values, fencer2_values);
+
+  /*
   int reading1_a = analogRead(fencer1_a);
   int reading1_b = analogRead(fencer1_b);
   int reading1_c = analogRead(fencer1_c);
   int reading2_a = analogRead(fencer2_a);
   int reading2_b = analogRead(fencer2_b);
   int reading2_c = analogRead(fencer2_c);
-
+  */
 
   if (!fencer1_scored) {
-     if (reading1_b > threshold_low && reading2_c < threshold_low) {
+     if (fencer1_values[1] > threshold_low && fencer2_values[2] < threshold_low) {
         if (fencer2_scored) {
            if (calculate_time_since_scoring() < epee_timeout_duration) {
               fencer1_scored = true;
@@ -77,7 +90,7 @@ void epee_loop() {
   }
 
   if (!fencer2_scored) {
-     if (reading2_b > threshold_low && reading1_c < threshold_low) {
+     if (fencer2_values[1] > threshold_low && fencer1_values[2] < threshold_low) {
         if (fencer1_scored) {
            if (calculate_time_since_scoring() < epee_timeout_duration) {
               fencer2_scored = true;

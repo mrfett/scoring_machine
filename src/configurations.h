@@ -15,6 +15,9 @@ bool mute = false;
 int total_modes = 3;
 int mode = 1;
 
+int fencer1_values[] = {};
+int fencer2_values[] = {};
+
 // When current is split 3 ways (weapon A + weapon B + ground)
 const int threshold_low = 15;
 // When current is split 2 ways (weapon A + weapon B)
