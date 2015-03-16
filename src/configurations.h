@@ -15,8 +15,11 @@ bool mute = false;
 int total_modes = 3;
 int mode = 1;
 
-int fencer1_values[] = {};
-int fencer2_values[] = {};
+int last_button_state = 1;
+unsigned long button_time = 0;
+
+// array to hold values of all 6 pins plus the millis of when the reading was taken
+int pin_values[] = {0, 0, 0, 0, 0, 0, 0};
 
 // When current is split 3 ways (weapon A + weapon B + ground)
 const int threshold_low = 15;
